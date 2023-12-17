@@ -7,3 +7,5 @@ Problem	Part	Data	Answer
 2	2	data/aoc02/problem1.txt	2416
 2	3	data/aoc02/example1.txt	2286
 2	4	data/aoc02/problem1.txt	63307
+3	1	data/aoc03/example1.txt	4361
+3	2	data/aoc03/problem1.txt	553825
