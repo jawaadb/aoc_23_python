@@ -1,10 +1,11 @@
-from helpers import load_text
+from helpers import load_text, get_answer
 import numpy as np
 
 
 EXAMPLE_1_FILE = "data/aoc02/example1.txt"
 PROBLEM_1_FILE = "data/aoc02/problem1.txt"
-
+EXAMPLE_2_FILE = EXAMPLE_1_FILE
+PROBLEM_2_FILE = PROBLEM_1_FILE
 
 MAX_CUBES: list[tuple[int, str]] = [(12, 'red'), (13, 'green'), (14, 'blue')]
 CUBE_COLOURS = [c[1] for c in MAX_CUBES]
@@ -28,7 +29,6 @@ def is_valid_result(r: str) -> bool:
     counts = np.zeros(len(MAX_CUBES))
 
     reveals = split_result(r)
-
     for reveal in reveals:
         idx = CUBE_COLOURS.index(reveal[1])
         counts[idx] += reveal[0]
@@ -44,14 +44,9 @@ def sum_of_valid_game_ids(lines: list[str]):
     id_sum = 0
     for l in lines:
         id, gset = split_game(l)
-
-        valid_set = is_valid_set(gset)
-
-        if valid_set:
+        if is_valid_set(gset):
             id_sum += id
-
     return id_sum
-
 
 
 def calc_power(gset: list[str]) -> int:
@@ -60,32 +55,27 @@ def calc_power(gset: list[str]) -> int:
     for r in gset:
         for c in split_result(r):
             idx = CUBE_COLOURS.index(c[1])
-            count = c[0]
-            max_count[idx] = max(max_count[idx], count)
+            max_count[idx] = max(max_count[idx], c[0])
 
     return np.prod(max_count)
 
 
 def calc_power_sum(lines: list[str]) -> int:
-    sum = 0
-    for l in lines:
-        sum += calc_power(split_game(l)[1])
-
-    return sum
+    return np.sum([calc_power(split_game(l)[1]) for l in lines])
 
 
 def main():
     lines = list(map(str.strip, load_text(EXAMPLE_1_FILE)))
-    assert sum_of_valid_game_ids(lines) == 8
+    assert sum_of_valid_game_ids(lines) == int(get_answer(2, 1))
 
     lines = list(map(str.strip, load_text(PROBLEM_1_FILE)))
-    assert sum_of_valid_game_ids(lines) == 2416
+    assert sum_of_valid_game_ids(lines) == int(get_answer(2, 2))
 
     lines = list(map(str.strip, load_text(EXAMPLE_1_FILE)))
-    assert calc_power_sum(lines)==2286
+    assert calc_power_sum(lines) == int(get_answer(2, 3))
 
     lines = list(map(str.strip, load_text(PROBLEM_1_FILE)))
-    print(f"result={calc_power_sum(lines)}")
+    assert calc_power_sum(lines) == int(get_answer(2, 4))
 
 
 if __name__ == '__main__':
