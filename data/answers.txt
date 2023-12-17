@@ -1,2 +1,5 @@
-aoc01_example   142
-aoc01_problem1.txt  
+Data    Part    Answer
+aoc01_example   1   142
+aoc01_problem1.txt  1  55488
+aoc01_example2.txt  1   281
+aoc01_problem1.txt  2  55614
