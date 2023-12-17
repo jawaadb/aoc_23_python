@@ -1,5 +1,5 @@
-Data    Part    Answer
-aoc01_example   1   142
-aoc01_problem1.txt  1  55488
-aoc01_example2.txt  1   281
-aoc01_problem1.txt  2  55614
+Problem	Part	Data	Answer
+1	1	data/aoc01/example1.txt	142
+1	2	data/aoc01/problem1.txt	55488
+1	3	data/aoc01/example2.txt	281
+1	4	data/aoc01/problem1.txt	55614
