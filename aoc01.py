@@ -1,4 +1,4 @@
-from common import get_answer, load_text, str_findall
+from helpers import get_answer, load_text, str_findall
 
 # Part 1
 EXAMPLE_FILE_1 = "data/aoc01/example1.txt"
